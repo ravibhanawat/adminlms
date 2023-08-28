@@ -1,0 +1,41 @@
+/* For regular CSS */
+.dealer_table .th .ant-table-cell {
+    background-color: #4f57b7 !important;
+    color: white !important;
+}
+
+.dealer_table .ant-table-thead>tr>th {
+     background-color: #132468;
+     color: white !important;
+}
+.dealer_table .table-row-light .ant-table-cell-fix-left {
+    padding: 0px !important;
+}
+
+.dealer_table .ant-table-tbody>tr.ant-table-row:hover>td,
+.dealer_table .ant-table-tbody>tr>td.ant-table-cell-row-hover {
+    background: #f2f2f2;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+}
+
+.dealer_table .table-row-dark .ant-table-cell-fix-left {
+    padding: 0px !important;
+}
+
+.dealer_table .table-row-dark {
+    background-color: #fff;
+}
+
+.dealer_table .ant-table-tbody:not(".ant-table-measure-row")>tr>td {
+    padding: 6px 6px !important;
+}
+
+.dealer_table .ant-table-thead>tr>th {
+    text-align: center !important;
+    text-transform: capitalize !important;
+}
+
+.dealer_table .ant-table-cell {
+    text-transform: capitalize !important;
+}
