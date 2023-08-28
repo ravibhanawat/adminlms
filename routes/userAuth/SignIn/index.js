@@ -41,12 +41,12 @@ const SignIn = (props) => {
               className="gx-signin-form gx-form-row0">
 
               <Form.Item
-                initialValue="demo@example.com"
+                initialValue="ravi@gmail.com"
                 rules={[{required: true, message: 'The input is not valid E-mail!'}]} name="email">
                 <Input placeholder="Email"/>
               </Form.Item>
               <Form.Item
-                initialValue="demo#123"
+                initialValue="Ravi@1234"
                 rules={[{required: true, message: 'Please input your Password!'}]} name="password">
                 <Input type="password" placeholder="Password"/>
               </Form.Item>

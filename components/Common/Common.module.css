@@ -39,3 +39,69 @@
 .dealer_table .ant-table-cell {
     text-transform: capitalize !important;
 }
+
+
+
+
+
+
+
+
+.ant-form-item {
+    position: relative;
+}
+
+.ant-form-item-label {
+    padding: 0px 0px 0px 0px !important;
+    position: absolute !important;
+    z-index: 2;
+    left: 3px;
+    top: -18px;
+    background: transparent;
+}
+
+.ant-modal-body .ant-form-item-label {
+    padding: 7px 0px 0px 0px !important;
+    position: absolute !important;
+    z-index: 2;
+    left: 3px;
+    top: -8px;
+    background: #ffffff;
+}
+
+/* Effect on Form Label And other label */
+/* .ant-form label {
+    font-size: 13px!important;
+} */
+.ant-form-item-label>label {
+    font-weight: 400;
+    /* font-size: 1rem !important; */
+    font-size: 13px !important;
+    height: 12px !important;
+}
+
+.ant-input-affix-wrapper-status-error:not(.ant-input-affix-wrapper-disabled):not(.ant-input-affix-wrapper-borderless).ant-input-affix-wrapper:focus,
+.ant-input-affix-wrapper-status-error:not(.ant-input-affix-wrapper-disabled):not(.ant-input-affix-wrapper-borderless).ant-input-affix-wrapper-focused {
+    box-shadow: none !important;
+}
+
+.ant-input-affix-wrapper:focus,
+.ant-input-affix-wrapper-focused {
+    box-shadow: none !important;
+}
+
+.ant-form-horizontal .ant-row{
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    margin-top: 18px !important;
+}
+
+/* If you want to apply styles when input is focused
+.ant-form-item > .ant-form-item-control > .ant-form-item-control-input > .ant-form-item-control-input-content input:focus {
+    .ant-form-item-label {
+        top: -10px !important;
+    }
+}
+*/
+
+

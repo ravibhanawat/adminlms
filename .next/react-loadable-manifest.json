@@ -1,4 +1,10 @@
 {
+  "../../routes/Sample": [
+    {
+      "id": "./routes/Sample/index.js",
+      "file": "static/chunks/2.js"
+    }
+  ],
   "../routes/userAuth/SignIn": [
     {
       "id": "./node_modules/@ant-design/colors/dist/index.esm.js",

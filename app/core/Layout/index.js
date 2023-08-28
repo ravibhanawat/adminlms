@@ -139,6 +139,7 @@ const AppLayout = ({children}) => {
 
   useEffect(() => {
     if (!isLoadingUser) {
+      console.log("authUser",authUser)
       if (!authUser && !isUnRestrictedRoute(router.pathname)) {
         router.push('/signin').then(r => r);
       } else if (authUser && isUnRestrictedRoute(router.pathname)) {

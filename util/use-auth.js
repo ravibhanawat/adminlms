@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useContext, createContext} from "react";
 import {httpClient} from "./Api";
 import {Cookies} from "react-cookie";
-
+import { useRouter } from "next/router";
 const authContext = createContext({});
 
 // Provider component that wraps app and makes auth object ..
@@ -9,6 +9,7 @@ const authContext = createContext({});
 
 export function AuthProvider({children}) {
   const auth = useProvideAuth();
+  console.log("auth",auth);
   return <authContext.Provider value={auth}>{children}</authContext.Provider>;
 }
 
@@ -24,6 +25,7 @@ const useProvideAuth = () => {
   const [isLoadingUser, setLoadingUser] = useState(true);
   const [isLoading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const router = useRouter()
 
   const fetchStart = () => {
     setLoading(true);
@@ -42,14 +44,15 @@ const useProvideAuth = () => {
 
   const userLogin = (data, callbackFun) => {
     fetchStart();
-    httpClient.post('auth/login', data)
-      .then(({data}) => {
-        if (data.result) {
+    httpClient.post('user/login', data)
+      .then(({ data }) => {
+        console.log(data);
+        if (data) {
           fetchSuccess();
-          httpClient.defaults.headers.common['Authorization'] = 'Bearer ' + data.token.access_token;
+          httpClient.defaults.headers.common['Authorization'] = 'Bearer ' + data.token;
           const cookies = new Cookies();
-          cookies.set('token', data.token.access_token);
-          getAuthUser();
+          cookies.set('token', data.token);
+          getAuthUser(data);
           if (callbackFun) callbackFun();
         } else {
           fetchError(data.error);
@@ -99,12 +102,12 @@ const useProvideAuth = () => {
       });
   };
 
-  const getAuthUser = () => {
+  const getAuthUser = (data) => {
     fetchStart();
-    httpClient.post("auth/me").then(({data}) => {
-      if (data.user) {
+    httpClient.get("user/auth/me").then(({data}) => {
+      if (data) {
         fetchSuccess();
-        setAuthUser(data.user);
+        setAuthUser(data);
       } else {
         fetchError(data.error);
       }
@@ -125,7 +128,8 @@ const useProvideAuth = () => {
       httpClient.defaults.headers.common['Authorization'] = 'Bearer ' + token;
 
     
-      httpClient.post("auth/me").then(({data}) => {
+    httpClient.get("user/auth/me").then(({ data }) => {
+        console.log(data);
         if (data.user) {
           setAuthUser(data.user);
         }
@@ -135,6 +139,18 @@ const useProvideAuth = () => {
         httpClient.defaults.headers.common['Authorization'] = '';
         setLoadingUser(false);
       });
+    // if (token) {
+    //   console.log('token', token);
+    //   setLoadingUser(false);
+    //   router.push('/')
+    //   // navigate('/')
+      
+    // } else {
+    //   // history.push('/signin')
+    //   setLoadingUser(false);
+    //   router.push('/signin')
+    //   // window.location.reload('/')
+    // }
     }, []
   );
 
