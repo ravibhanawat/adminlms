@@ -98,7 +98,7 @@ const userForm = () => {
       layout: 24,
       type: "SELECT",
       label: "Role",
-      name: "role",
+      name: "roles",
       options: [
         {
           label: "USER",
@@ -143,7 +143,7 @@ const userForm = () => {
 
       try {
         await (formType == "update"
-          ? updateUser({ ...field, _id: id })
+          ? updateUser({ ...field })
           : registerNewUser(field)
         ).then(({ data }) => {
           console.log(data);
