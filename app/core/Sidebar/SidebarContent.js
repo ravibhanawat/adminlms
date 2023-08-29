@@ -63,12 +63,12 @@ const SidebarContent = () => {
 
             <Menu.Item key="sample">
               <Link href="/sample">
-                <a><i className="icon icon-dasbhoard"/><span>dasbhoard</span></a>
+                <a><i className="icon icon-dasbhoard"/><span>Dasbhoard</span></a>
               </Link>
             </Menu.Item>
             <Menu.Item key="user">
               <Link href="/usermanage">
-                <a><i className="icon icon-dasbhoard"/><span>User Manage</span></a>
+                <a><i className="icon icon-user"/><span>User Manage</span></a>
               </Link>
             </Menu.Item>
           </Menu>

@@ -43,12 +43,13 @@ const SidebarLogo = () => {
       </div> : null}
 
       <Link href="/" >
-        <a className="gx-site-logo">
+        <a className="gx-site-logo" >
         {navStyle === NAV_STYLE_NO_HEADER_MINI_SIDEBAR && width >= TAB_SIZE ?
-          <img alt="lo" src={("/images/w-logo.png")}/> :
+          <img alt="lo" src={("/images/logo.webp")}/> :
           themeType === THEME_TYPE_LITE ?
             <img alt="logo1" src={("/images/logo-white.png")}/> :
-            <img alt="logo2" src={("/images/logo.png")}/>}
+              <img alt="logo2" src={("/images/logo.webp")} style={{ width: "45px" }} />}
+         DENTA<b>BEST</b>
         </a>
       </Link>
     </div>
