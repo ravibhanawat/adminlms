@@ -71,6 +71,26 @@ const SidebarContent = () => {
                 <a><i className="icon icon-user"/><span>User Manage</span></a>
               </Link>
             </Menu.Item>
+            <Menu.Item key="blog">
+              <Link href="/blog">
+                <a><i className="icon icon-apps"/><span>Blog</span></a>
+              </Link>
+            </Menu.Item>
+            <Menu.Item key="course">
+              <Link href="/course">
+                <a><i className="icon icon-card"/><span>Course</span></a>
+              </Link>
+            </Menu.Item>
+            <Menu.Item key="subject">
+              <Link href="/subject">
+                <a><i className="icon icon-copy"/><span>Subject</span></a>
+              </Link>
+            </Menu.Item>
+            <Menu.Item key="question">
+              <Link href="/question">
+                <a><i className="icon icon-auth-screen"/><span>Question Bank</span></a>
+              </Link>
+            </Menu.Item>
           </Menu>
         </CustomScrollbars>
       </div>

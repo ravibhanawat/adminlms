@@ -107,6 +107,12 @@ const useProvideAuth = () => {
     httpClient.get("user/auth/me").then(({data}) => {
       if (data) {
         fetchSuccess();
+        console.log("data",data)
+        // const cookies = new Cookies();
+        // const token = cookies.get("token");
+        // httpClient.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+
+
         setAuthUser(data);
       } else {
         fetchError(data.error);
@@ -130,8 +136,8 @@ const useProvideAuth = () => {
     
     httpClient.get("user/auth/me").then(({ data }) => {
         console.log(data);
-        if (data.user) {
-          setAuthUser(data.user);
+        if (data.username) {
+          setAuthUser(data);
         }
         setLoadingUser(false);
       }).catch(function (error) {

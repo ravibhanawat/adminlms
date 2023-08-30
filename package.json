@@ -4,6 +4,7 @@
   "scripts": {
     "dev": "node server/index.js",
     "build": "next build",
+    "export": "next build && next export",
     "start": "next start",
     "less": "lessc --js styles/wieldy.less styles/style.css && lessc --js styles/wieldy.less styles/style.min.css --compress -x"
   },
