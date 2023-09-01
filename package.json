@@ -2,7 +2,7 @@
   "name": "wieldt-nextjs",
   "version": "2.5.0",
   "scripts": {
-    "dev": "node server/index.js",
+    "dev": "NODE_OPTIONS=--openssl-legacy-provider node server/index.js",
     "build": "next build",
     "export": "next build && next export",
     "start": "next start",

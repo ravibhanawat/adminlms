@@ -47,13 +47,13 @@ const useProvideAuth = () => {
     httpClient.post('user/login', data)
       .then(({ data }) => {
         console.log(data);
-        if (data) {
+        if (data && data.status) {
           fetchSuccess();
           httpClient.defaults.headers.common['Authorization'] = 'Bearer ' + data.token;
           const cookies = new Cookies();
           cookies.set('token', data.token);
           getAuthUser(data);
-          if (callbackFun) callbackFun();
+          if (callbackFun) return callbackFun();
         } else {
           fetchError(data.error);
         }
@@ -105,7 +105,7 @@ const useProvideAuth = () => {
   const getAuthUser = (data) => {
     fetchStart();
     httpClient.get("user/auth/me").then(({data}) => {
-      if (data) {
+      if (data && data.status) {
         fetchSuccess();
         console.log("data",data)
         // const cookies = new Cookies();

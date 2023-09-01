@@ -4,16 +4,19 @@ import CommonFormField from "../../components/Common/CommonFormField";
 import CommonButton from "../../components/Common/CommonButton";
 import { Button, Form, message } from "antd";
 import {
-  getUserById,
-  registerNewUser,
-  updateUser,
-} from "../../service/userService";
+  getaCoursebyinstructur,
+  getaCourse,
+  allCoursebycategory,
+  updateCOurse,
+  CreateACourse
+} from "../../service/course";
 import { useRouter } from "next/router";
 
-const userForm = () => {
+const CourseForm = () => {
   const formref = useRef();
   const [loading, setLoading] = useState(false);
   const [initialData, setInitalData] = useState({});
+  const [category,setCategory] = useState()
   const router = useRouter();
   const { id } = router.query;
   console.log("loading", id);
@@ -28,10 +31,13 @@ const userForm = () => {
   const getUserDetail = async (id) => {
     setLoading(true);
     try {
-      await getUserById(id).then(({ data }) => {
+       await allCoursebycategory().then(({data})=>{
+        setCategory([...data.allCourse.map((r)=>{return {value:r.slug,label:r.title}})])
+       }) 
+      await getaCourse(id).then(({ data }) => {
         console.log(data);
-        setInitalData(data?.getProfile);
-        formref.current.setFieldsValue(data?.getProfile);
+        setInitalData(data?.course);
+        formref.current.setFieldsValue(data?.course);
       });
       setLoading(false);
     } catch (error) {
@@ -47,88 +53,69 @@ const userForm = () => {
     {
       layout: 24,
       type: "TEXT",
-      label: "First Name",
-      name: "firstname",
+      label: "Title",
+      name: "title",
       rules: [{ required: true }],
       elementProps: {
-        placeholder: "Enter your first name",
+        placeholder: "Please enter title here",
       },
     },
     {
       layout: 24,
       type: "TEXT",
-      label: "Last Name",
-      name: "lastname",
+      label: "Description",
+      name: "description",
       rules: [{ required: true }],
       elementProps: {
-        placeholder: "Enter your last name",
-      },
-    },
-    {
-      layout: 24,
-      type: "TEXT",
-      label: "Email",
-      name: "email",
-      rules: [{ required: true }],
-      elementProps: {
-        placeholder: "Eg: example@example.com",
-      },
-    },
-    {
-      layout: 24,
-      type: "TEXT",
-      label: "Profession",
-      name: "profession",
-      rules: [{ required: true }],
-      elementProps: {
-        placeholder: "Eg: student",
+        placeholder: "Please enter description here",
       },
     },
     {
       layout: 24,
       type: "NUMBER",
-      label: "Mobile",
-      name: "mobile",
+      label: "price",
+      name: "price",
+      rules: [{ required: true }],
+      
+    },
+    {
+      layout: 24,
+      type: "UPLOADER",
+      label: "Image",
+      name: "IMAGE",
+    //   rules: [{ required: true }],
+      
+    },
+    {
+      layout: 24,
+      type: "SELECT",
+      label: "Category",
+      name: "category",
+      options: category??[],
       rules: [{ required: true }],
       elementProps: {
         placeholder: "Eg: 123456789",
       },
     },
     {
-      layout: 24,
-      type: "SELECT",
-      label: "Role",
-      name: "roles",
-      options: [
-        {
-          label: "USER",
-          value: "user",
-        },
-        {
-          label: "ADMIN",
-          value: "admin",
-        },
-        {
-          label: "INSTRUCTURE",
-          value: "instructure",
-        },
-        
-      ],
-      rules: [{ required: true }],
+      layout: 6,
+      type: "CHECKBOX",
+      label: "paid",
+      name: "paid",
+       
+    //   rules: [{ required: true }],
       elementProps: {
         placeholder: "Eg: USER",
       },
     },
-    // {
-    //   layout: 24,
-    //   type: "PASSWORD",
-    //   label: "Password",
-    //   // name: "password",
+    {
+      layout: 24,
+      type: "TEXT",
+      label: "Subject",
+      name: "subjects",
       
-    //   elementProps: {
-    //     placeholder: "Eg: ********",
-    //   },
-    // },
+    
+    },
   ];
 
   const onSuccess = (value) => {
@@ -140,8 +127,8 @@ const userForm = () => {
 
       try {
         await (formType == "update"
-          ? updateUser({ ...field })
-          : registerNewUser(field)
+          ? updateCOurse({ ...initialData,...field })
+          : CreateACourse(field)
         ).then(({ data }) => {
           console.log(data);
           router.push("/usermanage");
@@ -173,4 +160,4 @@ const userForm = () => {
   );
 };
 
-export default userForm;
+export default CourseForm;

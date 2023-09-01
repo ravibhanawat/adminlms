@@ -12,7 +12,7 @@ const SignIn = (props) => {
   };
 
   const onFinish = values => {
-    userLogin(values);
+    userLogin(values,);
   };
 
   return (
@@ -51,7 +51,7 @@ const SignIn = (props) => {
                 <Input type="password" placeholder="Password"/>
               </Form.Item>
               <Form.Item valuePropName="checked">
-                <Checkbox>Remember me</Checkbox>
+                {/* <Checkbox>Remember me</Checkbox> */}
                 <Link href="/forgot-password">
                   <a className="gx-login-form-forgot">Forgot password</a></Link>
               </Form.Item>
@@ -59,14 +59,13 @@ const SignIn = (props) => {
                 <Button type="primary" className="gx-mb-0" htmlType="submit">
                   <IntlMessages id="app.userAuth.signIn"/>
                 </Button>
-                <span><IntlMessages id="app.userAuth.or"/></span> <Link href="/signup">
+                {/* <span><IntlMessages id="app.userAuth.or"/></span> <Link href="/signup">
                 <a>
                   <IntlMessages id="app.userAuth.signUp"/>
                 </a>
-              </Link>
+              </Link> */}
               </Form.Item>
-              <span
-                className="gx-text-light gx-fs-sm"> demo user email: 'demo@example.com' and password: 'demo#123'</span>
+            
             </Form>
           </div>
           {isLoading &&

@@ -1,29 +1,29 @@
 import React, { useState, useEffect } from "react";
-import { Space, Table, Tag, message, Button, Row, Col, Popconfirm } from "antd";
-import "./User.module.css";
+import { Space, Table, Tag, message, Button, Row, Image,Col, Popconfirm } from "antd";
+import "./course.module.css";
 import CommonDealer from "../../Common/commonTable";
 import { debounce } from "lodash";
 import { httpClient } from "../../../util/Api";
 import { useRouter } from "next/router";
 import { DeleteOutlined, EditOutlined, MoreOutlined } from "@ant-design/icons";
-import { deleteUser, getUser } from "../../../service/userService";
-
-const UserManage = () => {
+import { deleteCourse, getCourse } from "../../../service/course";
+// import Image from "next/image";
+const CourseManage = () => {
   const [loading, setLoading] = useState(false);
   const [pagination, setPagination] = useState({});
   const [rows, setRows] = useState([]);
   const router = useRouter();
 
   useEffect(() => {
-    getUsers();
+    getCourses();
   }, []);
 
-  const getUsers = async () => {
+  const getCourses = async () => {
     setLoading(true);
     try {
-      await getUser().then(({ data }) => {
+      await getCourse().then(({ data }) => {
         console.log(data);
-        setRows(data?.allUser);
+        setRows(data?.courses??[]);
       });
       setLoading(false);
     } catch (error) {
@@ -37,18 +37,15 @@ const UserManage = () => {
 
   const onEditRow = (Row) => {
     console.log("onEditRow", Row);
-    onAddRow({ id: Row?._id });
+    onAddRow({ id: Row?.title });
   };
 
   const onDeleteRow = async (Row) => {
     console.log("onDeleteRow", Row);
     try {
-      await deleteUser(Row?._id).then(({ data }) => {
+      await deleteCourse(Row?._id).then(({ data }) => {
         console.log(data);
-        let index = rows.findIndex(r=>r,_id ==Row._id)
-        rows[index] ={...rows[index],isDeleted:true}
-        setRows([...rows])
-        // setRows(rows.filter((row) => row?._id !== Row?._id));
+        setRows(rows.filter((row) => row?._id !== Row?._id));
 
         message.success({
           content: data?.message || "Something went wrong",
@@ -67,35 +64,51 @@ const UserManage = () => {
 
   const columns = [
     {
-      title: "firstname",
-      dataIndex: "firstname",
-      key: "firstname",
+      title: "Title",
+      dataIndex: "title",
+      key: "title",
       align: "center",
     },
     {
-      title: "lastname",
-      dataIndex: "lastname",
-      key: "lastname",
+      title: "description",
+      dataIndex: "description",
+      key: "description",
       align: "center",
     },
     {
-      title: "mobile",
-      dataIndex: "mobile",
-      key: "mobile",
+      title: "price",
+      dataIndex: "price",
+      key: "price",
       align: "center",
     },
     {
-      title: "email",
-      dataIndex: "email",
-      key: "email",
+      title: "image",
+      dataIndex: "image",
+      key: "image",
+      align: "center",
+      render:(_,item)=>{
+        return(<Image width={50} height={50} src={item.image} />)
+      }
+    },
+    {
+      title: "category",
+      dataIndex: "category",
+      key: "category",
       align: "center",
     },
     {
-      title: "roles",
-      dataIndex: "roles",
-      key: "roles",
+      title: "published",
+      dataIndex: "published",
+      key: "published",
       align: "center",
     },
+    {
+      title: "paid",
+      dataIndex: "paid",
+      key: "paid",
+      align: "center",
+    },
+    
     {
       title: "Action",
       dataIndex: "action",
@@ -113,8 +126,8 @@ const UserManage = () => {
             <Col span={8}>
               <Popconfirm
                 placement="leftTop"
-                title="Delete the User"
-                description="Are you sure to delete this User?"
+                title="Delete the task"
+                description="Are you sure to delete this task?"
                 okText="Yes"
                 onConfirm={() => onDeleteRow(data)}
                 cancelText="No"
@@ -131,7 +144,7 @@ const UserManage = () => {
   const onSearch = (val) => {};
   const onChange = (val) => {};
   const onAddRow = (data) => {
-    router.push({ pathname: "/usermanage/userForm", query: { ...data } });
+    router.push({ pathname: "/course/courseForm", query: { ...data } });
   };
 
   const _getExtraHeader = () => {
@@ -152,4 +165,4 @@ const UserManage = () => {
   );
 };
 
-export default UserManage;
+export default CourseManage;

@@ -13,5 +13,5 @@ export const updateUser = (field) => {
   return  httpClient.put(`user/update-profile`,field)
 }
 export const deleteUser = (id) => {
-  return  httpClient.delete(`user/${id}`)
+  return  httpClient.put(`user/${id}`,{isDeleted:true})
 }
