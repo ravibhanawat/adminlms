@@ -9,8 +9,9 @@ import { DeleteOutlined, MoreOutlined } from "@ant-design/icons";
 
 import { allCoursebycategory, aCoursebycategory,updateaCoursebycategory,deleteaCoursebycategory,posteaCoursebycategory } from "../../service/course";
 import CommaonList from "../../components/Common/commaonList";
+import { posteaExambycategory, updateaExambycategory } from "../../service/examService";
 // import Image from "next/image";
-const CourseCat = () => {
+const ExamCat = () => {
   const [loading, setLoading] = useState(false);
   const [initialData, setInitalData] = useState({});
     const [edit,setEdit] = useState(false)
@@ -25,9 +26,9 @@ const CourseCat = () => {
   const getCourses = async () => {
     setLoading(true);
     try {
-      await allCoursebycategory().then(({ data }) => {
+      await allExambycategory().then(({ data }) => {
         console.log(data);
-        setData(data?.allCourse??[]);
+        setData(data?.data??[]);
       });
       setLoading(false);
     } catch (error) {
@@ -47,17 +48,17 @@ const CourseCat = () => {
 
       try {
         await (edit ?
-            updateaCoursebycategory({ ...initialData,...field })
-          : posteaCoursebycategory(field)
+          updateaExambycategory({ ...initialData,...field })
+          : posteaExambycategory(field)
         ).then(( item ) => {
           let ls = item.data
-          console.log("postCourseCateg",data)
+          // console.log("postCourseCateg",data)
             if(edit){
                 let index = data.findIndex(r=>r._id ===initialData._id)
                 data[index] = {...data[index],...field}
                 setData([...data])
             }else{
-              setData([...data,...ls.postCourseCateg])
+              setData([...data,...ls.data])
             }
           console.log(data);
           setEdit(false);
@@ -81,33 +82,7 @@ const CourseCat = () => {
     });
   };
 
-//   const onEditRow = (Row) => {
-//     console.log("onEditRow", Row);
-//     onAddRow({ id: Row?.title });
-//   };
-
-//   const onDeleteRow = async (Row) => {
-//     console.log("onDeleteRow", Row);
-//     try {
-//       await deleteCourse(Row?._id).then(({ data }) => {
-//         console.log(data);
-//         setRows(rows.filter((row) => row?._id !== Row?._id));
-
-//         message.success({
-//           content: data?.message || "Something went wrong",
-//           key: "1",
-//         });
-//       });
-//       setLoading(false);
-//     } catch (error) {
-//       setLoading(false);
-//       message.error({
-//         content: error?.message || "Something went wrong",
-//         key: "1",
-//       });
-//     }
-//   };
-
+ 
   
   const formColumn = [{
     layout: 24,
@@ -184,4 +159,4 @@ const CourseCat = () => {
   );
 };
 
-export default CourseCat;
+export default ExamCat;

@@ -25,12 +25,12 @@ export const CreateACourse = (obj) => {
   export const aCoursebycategory = (slug) => {
     return  httpClient.get(`course/category/${slug}`)
   }
-  export const updateaCoursebycategory = (id) => {
-    return  httpClient.put(`course/category/${id}`)
+  export const updateaCoursebycategory = (field) => {
+    return  httpClient.put(`course/category/${field.slug}`,field)
   }
   export const deleteaCoursebycategory = (id) => {
     return  httpClient.delete(`course/category/${id}`)
   }
-  export const posteaCoursebycategory = () => {
-    return  httpClient.post(`course/category`)
+  export const posteaCoursebycategory = (field) => {
+    return  httpClient.post(`course/category`,field)
   }

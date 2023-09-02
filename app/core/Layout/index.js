@@ -165,7 +165,7 @@ const AppLayout = ({children}) => {
           </div>
           <Footer>
             <div className="gx-layout-footer-content">
-              Copyright Company Name © {today.getFullYear()}
+              Copyright Denta Best  © {today.getFullYear()}
             </div>
           </Footer>
         </Content>
