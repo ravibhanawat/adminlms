@@ -91,11 +91,11 @@ const SidebarContent = () => {
                 <a><i className="icon icon-card"/><span>Exam</span></a>
               </Link>
             </Menu.Item>
-            <Menu.Item key="examCat">
+            {/* <Menu.Item key="examCat">
               <Link href="/exam/examCat">
                 <a><i className="icon icon-card"/><span>Exam category </span></a>
               </Link>
-            </Menu.Item>
+            </Menu.Item> */}
             <Menu.Item key="subject">
               <Link href="/subject">
                 <a><i className="icon icon-copy"/><span>Subject</span></a>
