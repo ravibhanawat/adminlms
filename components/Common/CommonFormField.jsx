@@ -28,6 +28,8 @@ import {
 // import HCheckBoxList from '../HCheckBoxList';
 // import DatePicker from '@/components/System/HDatePicker';
 import { isEmpty } from "lodash";
+import CommonUploader from "./CommonUploader";
+import CK from "../editor";
 // import HDatePicker from '../HDatePicker/index';
 
 const CommonFormField = ({ items, layout = 1 }) => {
@@ -228,7 +230,7 @@ const CommonFormField = ({ items, layout = 1 }) => {
           element = <HIcon />;
           break;
         case "UPLOADER":
-          element = item.element ? item.element : <Upload />;
+          // element = item.element ? item.element : <CommonUploader />;
           break;
         case "RADIO":
           element = <Radio.Group options={item.options}></Radio.Group>;
@@ -291,6 +293,9 @@ const CommonFormField = ({ items, layout = 1 }) => {
           ) : (
             <>NO ELEMENT</>
           );
+          break;
+        case "EDITOR":
+          element = <CK  {...item.elementProps}/>
           break;
         default:
           element = <>NO Found</>;

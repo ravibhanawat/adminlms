@@ -76,6 +76,11 @@ const SidebarContent = () => {
                 <a><i className="icon icon-apps"/><span>Blog</span></a>
               </Link>
             </Menu.Item>
+            <Menu.Item key="blogCategory">
+              <Link href="/blogCategory">
+                <a><i className="icon icon-apps"/><span>Blog Category</span></a>
+              </Link>
+            </Menu.Item>
             <Menu.Item key="course">
               <Link href="/course">
                 <a><i className="icon icon-card"/><span>Course</span></a>
