@@ -3,7 +3,7 @@ import { Button, Descriptions, Input, Space, Table, Typography } from 'antd';
 import { ArrowLeftOutlined, SearchOutlined } from '@ant-design/icons';
 import { isEmpty } from 'lodash';
 import './Common.module.css'
-
+import classNames from "classnames";
 // interface commonDealerProps {
 //   rows: Array<any>;
 //   columns: Array<any>;
@@ -23,7 +23,7 @@ import './Common.module.css'
 
 // }
 
-const CommonTable = ({ rows, columns, type, title, loading, onRowClick, selectedRow, selectedCol, pagination, extra, rowSelection, onChange, onSearchList = () => null, search = true, extraHeader }) => {
+const CommonTable = ({ rows, columns, type, title, loading, onRowClick, selectedRow, selectedCol, pagination, extra, rowSelection, onChange, onSearchList = () => null, search = true, extraHeader,...props }) => {
   
   return (
     <>
@@ -43,7 +43,7 @@ const CommonTable = ({ rows, columns, type, title, loading, onRowClick, selected
       columns={columns}
       onChange={onChange}
       onRow={onRowClick}
-      rowClassName='dealer_table_row'
+      rowClassName={(e) =>classNames("dealer_table_row" ,e["isDeleted"]&&"user_deleted_css"  )}
       size="medium"
       rowKey="key"
       scroll={{ x: columns.length * 180 }}

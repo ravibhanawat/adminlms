@@ -27,7 +27,14 @@ const CourseForm = () => {
       getUserDetail(id);
     }
   }, [id]);
-
+  useEffect(()=>{
+    getcatcourse()
+  },[])
+  const getcatcourse = async()=>{
+    await allCoursebycategory().then(({data})=>{
+      setCategory([...data.allCourse.map((r)=>{return {value:r.slug,label:r.title}})])
+     }) 
+  }
   const getUserDetail = async (id) => {
     setLoading(true);
     try {
@@ -62,14 +69,28 @@ const CourseForm = () => {
     },
     {
       layout: 24,
-      type: "TEXT",
+      type: "EDITOR",
+      key:'4',
       label: "Description",
       name: "description",
-      rules: [{ required: true }],
+      rules: [{ required: false }],
       elementProps: {
-        placeholder: "Please enter description here",
-      },
+        elementName:"description",
+        formRef: formref,
+        // onChange:
+      }
+     
     },
+    // {
+    //   layout: 24,
+    //   type: "TEXT",
+    //   label: "Description",
+    //   name: "description",
+    //   rules: [{ required: true }],
+    //   elementProps: {
+    //     placeholder: "Please enter description here",
+    //   },
+    // },
     {
       layout: 24,
       type: "NUMBER",
@@ -92,7 +113,7 @@ const CourseForm = () => {
       label: "Category",
       name: "category",
       options: category??[],
-      rules: [{ required: true }],
+      // rules: [{ required: true }],
       elementProps: {
         placeholder: "Eg: 123456789",
       },
@@ -131,7 +152,7 @@ const CourseForm = () => {
           : CreateACourse(field)
         ).then(({ data }) => {
           console.log(data);
-          router.push("/usermanage");
+          router.push("/course");
           message.success({ content: data?.message, key: "2" });
         });
         setLoading(false);

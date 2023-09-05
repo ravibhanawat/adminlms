@@ -22,7 +22,9 @@
 .dealer_table .table-row-dark .ant-table-cell-fix-left {
     padding: 0px !important;
 }
-
+.user_deleted_css {
+    background: rgba(255, 0, 0, 0.040);
+  }
 .dealer_table .table-row-dark {
     background-color: #fff;
 }

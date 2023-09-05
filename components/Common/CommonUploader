@@ -63,7 +63,7 @@
 //     const props= {
 //         // maxCount: 1,
 //         headers:{
-//          "Authorization": token || undefined,
+//          "Authorization":"Bearer"+ " "+  token || undefined,
 //          'x-timestamp': `${Date.now()}`,
 //          "x-api-key":"qwertyuiop12345zxcvbnmkjh:U2FsdGVkX1/NsFV/wfHncKBib6chJ7JGhfJyt9aSv/ltg0s/P/NaMtyNM7tSiB78clryjyNDUxlNwLeS/O5AlSXoL3x+rVxpetSQJYyjoiA9miQ99RKT7VaRhJBUFDXk+DfeyvsUNpUr6jw0sMZwyANc429j3cRp+Ow7QsLp2Uq33GxJJ2MYzd1hFrg7sfDDRGHLiZaR3V2eXryzqj0GSA==",
 //           "x-custom-lang":  'en-US' 

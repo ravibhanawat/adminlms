@@ -11,6 +11,7 @@ import {
   TreeSelect,
   DatePicker,
   Upload,
+  Image
 } from "antd";
 
 // import HColor from '../HColor';
@@ -230,7 +231,7 @@ const CommonFormField = ({ items, layout = 1 }) => {
           element = <HIcon />;
           break;
         case "UPLOADER":
-          // element = item.element ? item.element : <CommonUploader />;
+          element = item.element ? item.element : <Image />;
           break;
         case "RADIO":
           element = <Radio.Group options={item.options}></Radio.Group>;

@@ -126,6 +126,9 @@ hr {
   height: 0;
   overflow: visible;
 }
+.user_deleted_css {
+  background: rgba(255, 0, 0, 0.040);
+}
 h1,
 h2,
 h3,

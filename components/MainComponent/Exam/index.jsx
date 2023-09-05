@@ -75,6 +75,9 @@ const ExamManage = () => {
       dataIndex: "description",
       key: "description",
       align: "center",
+      render:(_,item)=>{
+        return(<div key={item._id} dangerouslySetInnerHTML={{__html:item.description}} />)
+      }
     },
     {
       title: "price",

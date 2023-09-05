@@ -43,10 +43,10 @@ const UserManage = () => {
   const onDeleteRow = async (Row) => {
     console.log("onDeleteRow", Row);
     try {
-      await deleteUser(Row?._id).then(({ data }) => {
+      await deleteUser(Row).then(({ data }) => {
         console.log(data);
-        let index = rows.findIndex(r=>r,_id ==Row._id)
-        rows[index] ={...rows[index],isDeleted:true}
+        let index = rows.findIndex(r=>r._id ==Row._id)
+        rows[index] ={...rows[index],isDeleted:!Row.isDeleted}
         setRows([...rows])
         // setRows(rows.filter((row) => row?._id !== Row?._id));
 
@@ -57,6 +57,7 @@ const UserManage = () => {
       });
       setLoading(false);
     } catch (error) {
+      console.log(error)
       setLoading(false);
       message.error({
         content: error?.message || "Something went wrong",
@@ -110,7 +111,7 @@ const UserManage = () => {
             <Col span={8}>
               <EditOutlined onClick={() => onEditRow(data)} />
             </Col>
-            <Col span={8}>
+            {!data.isDeleted ? <Col span={8}>
               <Popconfirm
                 placement="leftTop"
                 title="Delete the User"
@@ -121,7 +122,20 @@ const UserManage = () => {
               >
                 <DeleteOutlined />
               </Popconfirm>
-            </Col>
+            </Col>:
+            <Col span={8}>
+            <Popconfirm
+              placement="leftTop"
+              title="Revoke this User"
+              description="Are you sure to Revoke this User?"
+              okText="Yes"
+              onConfirm={() => onDeleteRow(data)}
+              cancelText="No"
+            >
+              <DeleteOutlined />
+            </Popconfirm>
+          </Col>
+            }
           </Row>
         );
       },
@@ -142,6 +156,7 @@ const UserManage = () => {
     <CommonDealer
       rows={rows}
       columns={columns}
+      
       title={`Dispatch Header`}
       extraHeader={_getExtraHeader()}
       onSearchList={debounce(onSearch, 500)}
