@@ -5,7 +5,7 @@ import CommonDealer from "../../Common/commonTable";
 import { debounce } from "lodash";
 import { httpClient } from "../../../util/Api";
 import { useRouter } from "next/router";
-import { DeleteOutlined, EditOutlined, MoreOutlined } from "@ant-design/icons";
+import { DeleteOutlined, EditOutlined, MoreOutlined, ReloadOutlined } from "@ant-design/icons";
 import { deleteUser, getUser } from "../../../service/userService";
 
 const UserManage = () => {
@@ -132,7 +132,7 @@ const UserManage = () => {
               onConfirm={() => onDeleteRow(data)}
               cancelText="No"
             >
-              <DeleteOutlined />
+              <ReloadOutlined />
             </Popconfirm>
           </Col>
             }

@@ -6,11 +6,13 @@ import {  Form, message } from "antd";
  
 import { useRouter } from "next/router";
 import { CreateAExam, allExambycategory, getaExam, updateExam } from "../../service/examService";
+import { getCourse, } from "../../service/course";
 
 const ExamForm = () => {
   const formref = useRef();
   const [loading, setLoading] = useState(false);
   const [initialData, setInitalData] = useState({});
+  const [course,setCourse] = useState([])
   const [category,setCategory] = useState()
   const router = useRouter();
   const { id } = router.query;
@@ -31,8 +33,11 @@ const ExamForm = () => {
   const getCat =async()=>{
     try{
       // await allExambycategory().then(({data})=>{
-      //   setCategory([...data.data.map((r)=>{return {value:r.slug,label:r.title}})])
+      //   setCategory([...data.data.map((r)=>{return {value:r._id,label:r.title}})])
       //  }) 
+      await  getCourse().then(({data})=>{
+        setCourse([...data.courses.map((r)=>{return {value:r._id,label:r.title}})])
+      })
     }catch(err){
 
     }
@@ -41,9 +46,7 @@ const ExamForm = () => {
   const getUserDetail = async (id) => {
     setLoading(true);
     try {
-       await allExambycategory().then(({data})=>{
-        setCategory([...data.data.map((r)=>{return {value:r.slug,label:r.title}})])
-       }) 
+       
       await getaExam(id).then(({ data }) => {
         console.log(data);
         setInitalData(data?.data);
@@ -72,13 +75,16 @@ const ExamForm = () => {
     },
     {
       layout: 24,
-      type: "TEXT",
+      type: "EDITOR",
       label: "Description",
       name: "description",
       rules: [{ required: true }],
       elementProps: {
         placeholder: "Please enter description here",
+        elementName:"description",
+        formRef: formref,
       },
+     
     },
     {
       layout: 24,
@@ -123,7 +129,11 @@ const ExamForm = () => {
       type: "SELECT",
       label: "Course",
       name: "course",
-      
+      options:course,
+      multiple:true,
+      elementProps:{
+        mode:"multiple"
+      }
     
     },
   ];
