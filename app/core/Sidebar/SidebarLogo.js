@@ -25,6 +25,18 @@ const SidebarLogo = () => {
   }
   return (
     <div className="gx-layout-sider-header">
+      
+
+      <Link href="/" >
+        <a className="gx-site-logo" >
+        {navStyle === NAV_STYLE_NO_HEADER_MINI_SIDEBAR && width >= TAB_SIZE ?
+          <img alt="lo" src={("/images/logo.webp")}/> :
+          themeType === THEME_TYPE_LITE ?
+            <img alt="logo1" src={("/images/logo-white.png")}/> :
+              <img alt="logo2" src={("/images/logo.webp")} style={{ width: "48px" }} />}
+        <span style={{fontSize:"150%"}}><span style={{color:"white",}}> DENTA</span> <b style={{color: "#b32134"}}>BEST</b></span>
+        </a>
+      </Link>
       {(navStyle === NAV_STYLE_FIXED || navStyle === NAV_STYLE_MINI_SIDEBAR) ? <div className="gx-linebar">
         <i
           className={`gx-icon-btn icon icon-${navStyle === NAV_STYLE_MINI_SIDEBAR ? 'menu-unfold' : 'menu-fold'} ${themeType !== THEME_TYPE_LITE ? 'gx-text-white' : ''}`}
@@ -41,17 +53,6 @@ const SidebarLogo = () => {
           }}
         />
       </div> : null}
-
-      <Link href="/" >
-        <a className="gx-site-logo" >
-        {navStyle === NAV_STYLE_NO_HEADER_MINI_SIDEBAR && width >= TAB_SIZE ?
-          <img alt="lo" src={("/images/logo.webp")}/> :
-          themeType === THEME_TYPE_LITE ?
-            <img alt="logo1" src={("/images/logo-white.png")}/> :
-              <img alt="logo2" src={("/images/logo.webp")} style={{ width: "45px" }} />}
-         DENTA<b>BEST</b>
-        </a>
-      </Link>
     </div>
   );
 };

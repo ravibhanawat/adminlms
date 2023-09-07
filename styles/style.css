@@ -31042,6 +31042,7 @@ h6,
 }
 .gx-layout-sider-scrollbar {
   height: calc(100vh - 72px - 145px) !important;
+  
 }
 .framed-layout .gx-layout-sider-scrollbar {
   height: calc(100vh - 72px - 2 * 20px - 145px) !important;
@@ -31106,7 +31107,7 @@ h6,
 .gx-sidebar-notifications {
   padding: 30px 10px 10px;
   margin: 0 20px 10px;
-  border-bottom: solid 1px #e8e8e8;
+  /* border-bottom: solid 1px #e8e8e8; */
 }
 .ant-layout-sider-dark .gx-sidebar-notifications,
 .gx-drawer-sidebar-dark .gx-sidebar-notifications {

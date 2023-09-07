@@ -2,18 +2,71 @@
 .ant-menu-dark .ant-menu-item-selected>span>a, 
 .ant-menu-dark .ant-menu-item-selected>a:hover, 
 .ant-menu-dark .ant-menu-item-selected>span>a:hover{
-    color:#fff !important;
+    color:  #b32134 !important;
+    /* background-color: #ffffff !important; */
+    padding: 9px !important;
+    border-radius: 8px;
+    margin: 2px !important;
+
+
 }
 
 .ant-menu-dark .ant-menu-item:hover{
-    color: #E75F54 !important;
+    color:  #b32134 !important;
+    background-color:transparent !important;
+    padding: 9px;
+    border-radius: 8px;
+    margin: 2px !important;
+
+
+}
+.ant-menu-dark .ant-menu-item, .ant-menu-dark .ant-menu-item-group-title, .ant-menu-dark .ant-menu-item>a, .ant-menu-dark .ant-menu-item>span>a {
+    color: #ffffff !important;
 }
 
 .ant-menu-dark .ant-menu-item:hover>a, .ant-menu-dark .ant-menu-item-active>a, .ant-menu-dark .ant-menu-submenu-active>a, .ant-menu-dark .ant-menu-submenu-open>a, .ant-menu-dark .ant-menu-submenu-selected>a, .ant-menu-dark .ant-menu-submenu-title:hover>a, .ant-menu-dark .ant-menu-item:hover>span>a, .ant-menu-dark .ant-menu-item-active>span>a, .ant-menu-dark .ant-menu-submenu-active>span>a, .ant-menu-dark .ant-menu-submenu-open>span>a, .ant-menu-dark .ant-menu-submenu-selected>span>a, .ant-menu-dark .ant-menu-submenu-title:hover>span>a {
-    color: #E75F54 !important;
+    color: #b32134 !important;
+    /* background-color: #ffffff !important; */
+    padding: 9px;
+    border-radius: 8px;
+    margin: 2px !important;
+    margin: 2px !important;
+
 
 }
 
+
 .ant-menu-dark .ant-menu-item-selected {
-    color: #E75F54 !important;
+    color: #ffffff !important;
+    background-color:#b32134  !important;
+    border-radius: 8px;
+    padding: 9px;
+    margin: 2px !important;
+
+}
+
+.gx-layout-sider-dark {
+    background-color: #09044e !important;
+    color: #038fdd;
+}
+
+.gx-layout-sider-dark .gx-layout-sider-header {
+    background-color: #09044e !important ;
+    
+    box-shadow: none;
+}
+.ant-menu.ant-menu-dark, .ant-menu-dark .ant-menu-sub, .ant-menu.ant-menu-dark .ant-menu-sub {
+    color: #038fdd;
+    background: #09044e !important;
+
+    background-image: initial;
+    background-position-x: initial;
+    background-position-y: initial;
+    background-size: initial;
+    background-repeat-x: initial;
+    background-repeat-y: initial;
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: initial;
+    background-color: rgb(9, 4, 78);
 }

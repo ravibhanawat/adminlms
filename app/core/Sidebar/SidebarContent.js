@@ -49,12 +49,12 @@ const SidebarContent = () => {
   return (
     <React.Fragment>
       <SidebarLogo/>
-      <div className="gx-sidebar-content">
-        <div className={`gx-sidebar-notifications ${getNoHeaderClass(navStyle)}`}>
+      <div className="gx-sidebar-content" style={{margin:"10px"}} >
+        {/* <div className={`gx-sidebar-notifications ${getNoHeaderClass(navStyle)}`}> */}
           {/* <UserProfile/> */}
           {/* <AppsNavigation/> */}
-        </div>
-        <CustomScrollbars className="gx-layout-sider-scrollbar">
+        {/* </div> */}
+        <CustomScrollbars  className="gx-layout-sider-scrollbar">
           <Menu
             defaultOpenKeys={[defaultOpenKeys]}
             selectedKeys={[selectedKeys]}
