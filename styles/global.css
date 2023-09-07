@@ -1,0 +1,19 @@
+.ant-menu-dark .ant-menu-item-selected>a, 
+.ant-menu-dark .ant-menu-item-selected>span>a, 
+.ant-menu-dark .ant-menu-item-selected>a:hover, 
+.ant-menu-dark .ant-menu-item-selected>span>a:hover{
+    color:#fff !important;
+}
+
+.ant-menu-dark .ant-menu-item:hover{
+    color: #E75F54 !important;
+}
+
+.ant-menu-dark .ant-menu-item:hover>a, .ant-menu-dark .ant-menu-item-active>a, .ant-menu-dark .ant-menu-submenu-active>a, .ant-menu-dark .ant-menu-submenu-open>a, .ant-menu-dark .ant-menu-submenu-selected>a, .ant-menu-dark .ant-menu-submenu-title:hover>a, .ant-menu-dark .ant-menu-item:hover>span>a, .ant-menu-dark .ant-menu-item-active>span>a, .ant-menu-dark .ant-menu-submenu-active>span>a, .ant-menu-dark .ant-menu-submenu-open>span>a, .ant-menu-dark .ant-menu-submenu-selected>span>a, .ant-menu-dark .ant-menu-submenu-title:hover>span>a {
+    color: #E75F54 !important;
+
+}
+
+.ant-menu-dark .ant-menu-item-selected {
+    color: #E75F54 !important;
+}

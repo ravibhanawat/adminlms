@@ -45,7 +45,7 @@ const userForm = () => {
 
   const formColumn = [
     {
-      layout: 24,
+      layout: 6,
       type: "TEXT",
       label: "First Name",
       name: "firstname",
@@ -55,7 +55,7 @@ const userForm = () => {
       },
     },
     {
-      layout: 24,
+      layout: 6,
       type: "TEXT",
       label: "Last Name",
       name: "lastname",
@@ -65,7 +65,7 @@ const userForm = () => {
       },
     },
     {
-      layout: 24,
+      layout: 6,
       type: "TEXT",
       label: "Email",
       name: "email",
@@ -75,7 +75,7 @@ const userForm = () => {
       },
     },
     {
-      layout: 24,
+      layout: 6,
       type: "TEXT",
       label: "Profession",
       name: "profession",
@@ -85,7 +85,7 @@ const userForm = () => {
       },
     },
     {
-      layout: 24,
+      layout: 6,
       type: "NUMBER",
       label: "Mobile",
       name: "mobile",
@@ -95,7 +95,7 @@ const userForm = () => {
       },
     },
     {
-      layout: 24,
+      layout: 6,
       type: "SELECT",
       label: "Role",
       name: "roles",
@@ -119,28 +119,137 @@ const userForm = () => {
         placeholder: "Eg: USER",
       },
     },
-    // {
-    //   layout: 24,
-    //   type: "PASSWORD",
-    //   label: "Password",
-    //   // name: "password",
+    {
+      layout: 6,
+      type: "DATE",
+      label: "DOB",
+      name: "DOB",
       
-    //   elementProps: {
-    //     placeholder: "Eg: ********",
-    //   },
-    // },
+      elementProps: {
+        placeholder: "Eg: 12/MAY/1999",
+        format:"DD/MMM/YYYY",
+        size:"large",
+        width:"100%"
+        
+      },
+    },
+    {
+      layout: 6,
+      type: "TEXT",
+      label: "year of Graduation",
+      name: "year_of_graduation",
+      
+      elementProps: {
+        placeholder: "Eg:  1",
+      
+        sizr:"large"
+      },
+    },
+    {
+      layout: 6,
+      type: "TEXT",
+      label: "Country",
+      name: "country",
+      
+      elementProps: {
+        placeholder: "Eg:  CANADA",
+        
+      },
+    },
+    {
+      layout: 6,
+      type: "TEXT",
+      label: "Time Zone",
+      name: "timezone",
+      
+      elementProps: {
+        // placeholder: "Eg:  1",
+        
+      },
+    },
+    {
+      layout: 6,
+      type: "NUMBER",
+      label: "Clinical Experience",
+      name: "clinical_experience",
+      
+      elementProps: {
+
+        placeholder: "Number of year",
+        
+      },
+    },
+    {
+      layout: 12,
+      type: "TEXT",
+      label: "ADDRESS",
+      name: "full_address",
+      
+      elementProps: {
+
+        placeholder: "Address",
+        
+      },
+    },
+    {
+      layout: 6,
+      type: "TEXT",
+      label: "City",
+      name: "city",
+      
+      elementProps: {
+
+        placeholder: "Address",
+        
+      },
+    },
+    {
+      layout: 6,
+      type: "TEXT",
+      label: "Zipcode",
+      name: "zipcode",
+      
+      elementProps: {
+
+        placeholder: "Address",
+        
+      },
+    },
+     
   ];
+  // {
+  //   dob,
+
+  //   year_of_graduation,
+  //   place_and_country,
+  //   current_country_of_residence,
+  //   timezone,
+  //   clinical_experience,
+  //   current_occupation,
+  //   appearing_for_exam_name,
+  //   exam_date,
+  //   is_first_attempt,
+  //   user_image,
+    
+  //   full_address,
+  //   city,
+  //   zipcode,
+  //   country,
+  // }
 
   const onSuccess = (value) => {
     console.log(value);
 
     formref.current.validateFields().then(async (field) => {
       setLoading(true);
-      console.log("onSuccess", field);
+      // console.log("onSuccess", field);
+      if(formType == "update"){
+          if(initialData.email ===field.email) delete field.email
+          if(initialData.mobile ===field.mobile)  delete field.mobile
 
+      }
       try {
-        await (formType == "update"
-          ? updateUser({ ...field })
+        await (formType == "update"?   updateUser({ ...field,_id:id })
           : registerNewUser(field)
         ).then(({ data }) => {
           console.log(data);

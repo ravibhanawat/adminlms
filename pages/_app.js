@@ -2,7 +2,7 @@ import React from 'react';
 import Head from 'next/head'
 import withRedux from 'next-redux-wrapper';
 import 'antd/dist/antd.css';
-
+import "../styles/global.css";
 import "../public/vendors/style";
 import "../styles/style.min.css"
 import initStore from '../redux/store';

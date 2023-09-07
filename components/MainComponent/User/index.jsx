@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Space, Table, Tag, message, Button, Row, Col, Popconfirm } from "antd";
+import { Space, Table, Tag, message, Button, Row, Col, Popconfirm, Tooltip } from "antd";
 import "./User.module.css";
 import CommonDealer from "../../Common/commonTable";
 import { debounce } from "lodash";
 import { httpClient } from "../../../util/Api";
 import { useRouter } from "next/router";
-import { DeleteOutlined, EditOutlined, MoreOutlined, ReloadOutlined } from "@ant-design/icons";
-import { deleteUser, getUser } from "../../../service/userService";
+import { CloseOutlined, DeleteOutlined, EditOutlined, EyeFilled, MoreOutlined, ReloadOutlined } from "@ant-design/icons";
+import { deleteUser, getUser,permanentdeleteUser } from "../../../service/userService";
 
 const UserManage = () => {
   const [loading, setLoading] = useState(false);
@@ -65,6 +65,31 @@ const UserManage = () => {
       });
     }
   };
+  const permanentonDeleteRow = async (Row) => {
+    
+    try {
+      await permanentdeleteUser(Row).then(({ data }) => {
+        console.log(data);
+        const Rowsdel=  rows.filter(r=>r._id !==Row._id)
+        // rows[index] ={...rows[index],isDeleted:!Row.isDeleted}
+        setRows([...Rowsdel])
+        // setRows(rows.filter((row) => row?._id !== Row?._id));
+
+        message.success({
+          content: data?.message || "Something went wrong",
+          key: "1",
+        });
+      });
+      setLoading(false);
+    } catch (error) {
+      console.log(error)
+      setLoading(false);
+      message.error({
+        content: error?.message || "Something went wrong",
+        key: "1",
+      });
+    }
+  };
 
   const columns = [
     {
@@ -105,10 +130,13 @@ const UserManage = () => {
       render: (item, data) => {
         return (
           <Row gutter={[12, 12]}>
-            <Col span={8}>
-              <MoreOutlined />
+            <Col span={4}>
+              <Tooltip title={"View more"} >
+
+              <EyeFilled onClick={()=>router.push(`usermanage/${data._id}`)} />
+              </Tooltip>
             </Col>
-            <Col span={8}>
+            <Col span={4}>
               <EditOutlined onClick={() => onEditRow(data)} />
             </Col>
             {!data.isDeleted ? <Col span={8}>
@@ -123,7 +151,7 @@ const UserManage = () => {
                 <DeleteOutlined />
               </Popconfirm>
             </Col>:
-            <Col span={8}>
+            <Col span={4}>
             <Popconfirm
               placement="leftTop"
               title="Revoke this User"
@@ -136,6 +164,18 @@ const UserManage = () => {
             </Popconfirm>
           </Col>
             }
+             <Col span={4}>
+            <Popconfirm
+              placement="leftTop"
+              title="Permanent Delete this User"
+              description="Are you sure to Permanent Delete this User?"
+              okText="Yes"
+              onConfirm={() => permanentonDeleteRow(data)}
+              cancelText="No"
+            >
+              <CloseOutlined />
+            </Popconfirm>
+          </Col>
           </Row>
         );
       },

@@ -39,3 +39,9 @@
 .dealer_table .ant-table-cell {
     text-transform: capitalize !important;
 }
+.user-details {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin-right: 16px; /* Add margin to separate columns */
+  }
