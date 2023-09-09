@@ -31,36 +31,31 @@ const Material = () => {
           });
         }
       };
+      const onAddRow = (data) => {
+        router.push({ pathname: "/material/materialForm", query: { ...data } });
+      };
+      const onEditRow = (Row) => {
+        console.log("onEditRow", Row);
+        onAddRow({ id: Row?._id });
+      };
 
       const columns = [
         {
-          title: "firstname",
-          dataIndex: "firstname",
-          key: "firstname",
+          title: "title",
+          dataIndex: "title",
+          key: "title",
           align: "center",
         },
         {
-          title: "lastname",
-          dataIndex: "lastname",
-          key: "lastname",
+          title: "type",
+          dataIndex: "type",
+          key: "type",
           align: "center",
         },
         {
-          title: "mobile",
-          dataIndex: "mobile",
-          key: "mobile",
-          align: "center",
-        },
-        {
-          title: "email",
-          dataIndex: "email",
-          key: "email",
-          align: "center",
-        },
-        {
-          title: "roles",
-          dataIndex: "roles",
-          key: "roles",
+          title: "status",
+          dataIndex: "starus",
+          key: "starus",
           align: "center",
         },
         {
@@ -68,13 +63,26 @@ const Material = () => {
           dataIndex: "action",
           key: "action",
           align: "center",
-        }
+          render: (item, data) => {
+            return (
+              <Row gutter={[12, 12]}>
+                <Col span={4}>
+                  <Tooltip title={"View more"} >
+    
+                  {/* <EyeFilled onClick={()=>router.push(`material/${data._id}`)} /> */}
+                  </Tooltip>
+                </Col>
+                <Col span={4}>
+                  <EditOutlined onClick={() => onEditRow(data)} />
+                </Col>
+                </Row>
+                )}
+        },
+        
       ];
       const onSearch = (val) => {};
       const onChange = (val) => {};
-      const onAddRow = (data) => {
-        router.push({ pathname: "/material/materialForm", query: { ...data } });
-      };
+      
     
       const _getExtraHeader = () => {
         return <Button onClick={() => onAddRow()}> Add New</Button>;

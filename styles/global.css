@@ -70,3 +70,107 @@
     background-clip: initial;
     background-color: rgb(9, 4, 78);
 }
+
+
+/* For regular CSS */
+ .th .ant-table-cell {
+    background-color: #4f57b7 !important;
+    color: white !important;
+}
+
+ .ant-table-thead>tr>th {
+     background-color: #132468;
+     color: white !important;
+}
+ .table-row-light .ant-table-cell-fix-left {
+    padding: 0px !important;
+}
+
+ .ant-table-tbody>tr.ant-table-row:hover>td,
+ .ant-table-tbody>tr>td.ant-table-cell-row-hover {
+    background: #f2f2f2;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+}
+
+ .table-row-dark .ant-table-cell-fix-left {
+    padding: 0px !important;
+}
+.user_deleted_css {
+    background: rgba(255, 0, 0, 0.040);
+  }
+ .table-row-dark {
+    background-color: #fff;
+}
+
+ .ant-table-tbody:not(.ant-table-measure-row)>tr>td {
+    padding: 6px 6px !important;
+}
+
+.ant-table-thead>tr>th {
+    text-align: center !important;
+    text-transform: capitalize !important;
+}
+
+ .ant-table-cell {
+    text-transform: capitalize !important;
+}
+
+
+
+
+
+
+
+
+.ant-form-item {
+    position: relative;
+}
+
+.ant-form-item-label {
+    padding: 0px 0px 0px 0px !important;
+    position: absolute !important;
+    z-index: 2;
+    left: 3px;
+    top: -18px;
+    background: transparent;
+}
+
+.ant-modal-body .ant-form-item-label {
+    padding: 7px 0px 0px 0px !important;
+    position: absolute !important;
+    z-index: 2;
+    left: 3px;
+    top: -8px;
+    background: #ffffff;
+}
+
+/* Effect on Form Label And other label */
+/* .ant-form label {
+    font-size: 13px!important;
+} */
+.ant-form-item-label>label {
+    font-weight: 400;
+    /* font-size: 1rem !important; */
+    font-size: 13px !important;
+    height: 12px !important;
+}
+
+.ant-input-affix-wrapper-status-error:not(.ant-input-affix-wrapper-disabled):not(.ant-input-affix-wrapper-borderless).ant-input-affix-wrapper:focus,
+.ant-input-affix-wrapper-status-error:not(.ant-input-affix-wrapper-disabled):not(.ant-input-affix-wrapper-borderless).ant-input-affix-wrapper-focused {
+    box-shadow: none !important;
+}
+
+.ant-input-affix-wrapper:focus,
+.ant-input-affix-wrapper-focused {
+    box-shadow: none !important;
+}
+
+.ant-form-horizontal .ant-row{
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    margin-top: 18px !important;
+}
+
+ 
+

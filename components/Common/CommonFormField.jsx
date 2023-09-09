@@ -11,7 +11,8 @@ import {
   TreeSelect,
   DatePicker,
   Upload,
-  Image
+  Image,
+  Switch
 } from "antd";
 
 // import HColor from '../HColor';
@@ -72,7 +73,7 @@ const CommonFormField = ({ items, layout = 1 }) => {
 
       switch (item?.type?.toUpperCase()) {
         case "DOCUMENTS":
-          element = <HDocumentsUploader />;
+          element = <CommonUploader />;
           break;
         case "TEXT":
           element = (
@@ -96,6 +97,11 @@ const CommonFormField = ({ items, layout = 1 }) => {
         // case 'CHECKBOXLIST':
         //     element = <Checkbox options={item.options } />
         //     break;
+
+        case "SWITCH":
+          element = <Switch  {...item.elementProps} />;
+          break;
+          
         case "TEXTAREA":
           element = (
             <Input.TextArea

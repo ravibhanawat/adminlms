@@ -7,22 +7,22 @@ import { httpClient } from "../../../util/Api";
 import { useRouter } from "next/router";
 import { DeleteOutlined, EditOutlined, MoreOutlined } from "@ant-design/icons";
 import { deleteCourse, getCourse } from "../../../service/course";
-import { deleteExam, getExam } from "../../../service/examService";
+import {  deletesubject, getsubject } from "../../../service/subjectService";
 // import Image from "next/image";
-const ExamManage = () => {
+const SubjectManage = () => {
   const [loading, setLoading] = useState(false);
   const [pagination, setPagination] = useState({});
   const [rows, setRows] = useState([]);
   const router = useRouter();
 
   useEffect(() => {
-    getCourses();
+    getsubject();
   }, []);
 
   const getCourses = async () => {
     setLoading(true);
     try {
-      await getExam().then(({ data }) => {
+      await getsubject().then(({ data }) => {
         console.log(data);
         setRows(data?.data??[]);
       });
@@ -44,7 +44,7 @@ const ExamManage = () => {
   const onDeleteRow = async (Row) => {
     // console.log("onDeleteRow", Row);
     try {
-      await deleteExam(Row?._id).then(({ data }) => {
+      await deletesubject(Row?._id).then(({ data }) => {
         console.log(data);
         setRows(rows.filter((row) => row?._id !== Row?._id));
 
@@ -145,7 +145,7 @@ const ExamManage = () => {
   const onSearch = (val) => {};
   const onChange = (val) => {};
   const onAddRow = (data) => {
-    router.push({ pathname: "/exam/examForm", query: { ...data } });
+    router.push({ pathname: "/subject/subjectForm", query: { ...data } });
   };
 
   const _getExtraHeader = () => {
@@ -166,4 +166,4 @@ const ExamManage = () => {
   );
 };
 
-export default ExamManage;
+export default SubjectManage;

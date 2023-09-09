@@ -101,7 +101,7 @@ const CourseForm = () => {
     },
     {
       layout: 24,
-      type: "UPLOADER",
+      type: "DOCUMENTS",
       label: "Image",
       name: "IMAGE",
     //   rules: [{ required: true }],
@@ -129,15 +129,15 @@ const CourseForm = () => {
         placeholder: "Eg: USER",
       },
     },
-    {
-      layout: 24,
-      type: "TEXT",
-      label: "Subject",
-      name: "subjects",
+  //   {
+  //     layout: 24,
+  //     type: "TEXT",
+  //     label: "Subject",
+  //     name: "subjects",
       
     
-    },
-  ];
+  //   },
+  // ];
 
   const onSuccess = (value) => {
     console.log(value);
