@@ -137,7 +137,7 @@ const CourseForm = () => {
       
     
   //   },
-  // ];
+  ];
 
   const onSuccess = (value) => {
     console.log(value);

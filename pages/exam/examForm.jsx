@@ -96,7 +96,7 @@ const ExamForm = () => {
     },
     {
       layout: 24,
-      type: "UPLOADER",
+      type: "DOCUMENTS",
       label: "Image",
       name: "IMAGE",
     //   rules: [{ required: true }],

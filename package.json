@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "NODE_OPTIONS=--openssl-legacy-provider node server/index.js",
     "build": "NODE_OPTIONS=--openssl-legacy-provider next build",
-    "export": "next build && next export",
+    "export": "NODE_OPTIONS=--openssl-legacy-provider next build && next export",
     "start": "next start",
     "less": "lessc --js styles/wieldy.less styles/style.css && lessc --js styles/wieldy.less styles/style.min.css --compress -x"
   },

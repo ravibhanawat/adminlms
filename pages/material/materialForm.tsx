@@ -5,7 +5,7 @@ import CommonButton from "../../components/Common/CommonButton";
 import {CreateAMaterial, getaMaterial, updateMaterial} from "../../service/material"
 import { useRouter } from 'next/router';
 const materialForm = () => {
-    const formref = useRef();
+    const formref = useRef<any>();
     const [loading,setLoading]= useState(false)
     const [initialData,setInitalData]= useState({})
     const router = useRouter()
