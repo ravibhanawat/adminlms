@@ -74,14 +74,25 @@ const materialForm = () => {
       },
         },
         {
-            layout:12,
-            type:"SELECT",
-            label:'Type',name:'type', 
+            layout:24,
+            type:"EDITOR",
+            label:'Description',name:'description', 
             rules: [{ required: true }],
-      elementProps: {
-        // placeholder: "Please enter title here",
-      },
+            elementProps: {
+              elementName:"description",
+              formRef: formref,
+              // onChange:
+            }
         },
+      //   {
+      //       layout:12,
+      //       type:"SELECT",
+      //       label:'Type',name:'type', 
+      //       rules: [{ required: true }],
+      // elementProps: {
+      //   // placeholder: "Please enter title here",
+      // },
+      //   },
         {
             layout:12,
             type:"DOCUMENTS",

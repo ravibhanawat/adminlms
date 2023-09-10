@@ -14,8 +14,8 @@ const CommonActionColumn = ({onEditRow,extraMoreColumn,onDeleteRow}) => {
     <Col >
       <Popconfirm
         placement="leftTop"
-        title="Delete the User"
-        description="Are you sure to delete this User?"
+        title="Delete"
+        description="Are you sure to delete this ?"
         okText="Yes"
         onConfirm={() => onDeleteRow()}
         cancelText="No"

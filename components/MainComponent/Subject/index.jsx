@@ -8,6 +8,7 @@ import { useRouter } from "next/router";
 import { DeleteOutlined, EditOutlined, MoreOutlined } from "@ant-design/icons";
 import { deleteCourse, getCourse } from "../../../service/course";
 import {  deletesubject, getsubject } from "../../../service/subjectService";
+import CommonActionColumn from "../../Common/CommonActionColumn";
 // import Image from "next/image";
 const SubjectManage = () => {
   const [loading, setLoading] = useState(false);
@@ -16,7 +17,7 @@ const SubjectManage = () => {
   const router = useRouter();
 
   useEffect(() => {
-    getsubject();
+    getCourses();
   }, []);
 
   const getCourses = async () => {
@@ -38,7 +39,7 @@ const SubjectManage = () => {
 
   const onEditRow = (Row) => {
     console.log("onEditRow", Row);
-    onAddRow({ id: Row?.title });
+    onAddRow({ id: Row?._id });
   };
 
   const onDeleteRow = async (Row) => {
@@ -117,26 +118,7 @@ const SubjectManage = () => {
       align: "center",
       render: (item, data) => {
         return (
-          <Row gutter={[12, 12]}>
-            <Col span={8}>
-              <MoreOutlined />
-            </Col>
-            <Col span={8}>
-              <EditOutlined onClick={() => onEditRow(data)} />
-            </Col>
-            <Col span={8}>
-              <Popconfirm
-                placement="leftTop"
-                title="Delete the task"
-                description="Are you sure to delete this task?"
-                okText="Yes"
-                onConfirm={() => onDeleteRow(data)}
-                cancelText="No"
-              >
-                <DeleteOutlined />
-              </Popconfirm>
-            </Col>
-          </Row>
+          <CommonActionColumn onEditRow={()=>onEditRow(data)} onDeleteRow={()=>onDeleteRow(data)} extraMoreColumn={''} />
         );
       },
     },

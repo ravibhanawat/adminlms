@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Space, Table, Tag, message, Button, Row, Image,Col, Popconfirm } from "antd";
+import { Space, Table, Tag, message, Button, Row, Image,Col, Popconfirm, Spin } from "antd";
 import "./course.module.css";
 import CommonDealer from "../../Common/commonTable";
 import { debounce } from "lodash";
@@ -7,6 +7,7 @@ import { httpClient } from "../../../util/Api";
 import { useRouter } from "next/router";
 import { DeleteOutlined, EditOutlined, MoreOutlined } from "@ant-design/icons";
 import { deleteCourse, getCourse } from "../../../service/course";
+import CommonActionColumn from "../../Common/CommonActionColumn";
 // import Image from "next/image";
 const CourseManage = () => {
   const [loading, setLoading] = useState(false);
@@ -23,7 +24,7 @@ const CourseManage = () => {
     try {
       await getCourse().then(({ data }) => {
         console.log(data);
-        setRows(data?.courses??[]);
+        setRows(data?.data??[]);
       });
       setLoading(false);
     } catch (error) {
@@ -37,7 +38,7 @@ const CourseManage = () => {
 
   const onEditRow = (Row) => {
     console.log("onEditRow", Row);
-    onAddRow({ id: Row?.title });
+    onAddRow({ id: Row?.slug });
   };
 
   const onDeleteRow = async (Row) => {
@@ -48,7 +49,7 @@ const CourseManage = () => {
         setRows(rows.filter((row) => row?._id !== Row?._id));
 
         message.success({
-          content: data?.message || "Something went wrong",
+          content: data?.message || "Delete success",
           key: "1",
         });
       });
@@ -119,30 +120,15 @@ const CourseManage = () => {
       align: "center",
       render: (item, data) => {
         return (
-          <Row gutter={[12, 12]}>
-            <Col span={8}>
-              <MoreOutlined />
-            </Col>
-            <Col span={8}>
-              <EditOutlined onClick={() => onEditRow(data)} />
-            </Col>
-            <Col span={8}>
-              <Popconfirm
-                placement="leftTop"
-                title="Delete the task"
-                description="Are you sure to delete this task?"
-                okText="Yes"
-                onConfirm={() => onDeleteRow(data)}
-                cancelText="No"
-              >
-                <DeleteOutlined />
-              </Popconfirm>
-            </Col>
-          </Row>
+          <CommonActionColumn onEditRow={()=>onEditRow(data)} onDeleteRow={()=>onDeleteRow(data)} extraMoreColumn={''} />
+
         );
       },
     },
   ];
+  if(loading){
+    return <Spin />
+  }
 
   const onSearch = (val) => {};
   const onChange = (val) => {};

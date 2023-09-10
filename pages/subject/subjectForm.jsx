@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import CommonForm from "../../components/Common/CommonForm";
 import CommonFormField from "../../components/Common/CommonFormField";
 import CommonButton from "../../components/Common/CommonButton";
-import {  Form, message } from "antd";
+import {  Form, Spin, message } from "antd";
  
 import { useRouter } from "next/router";
 import { CreateAsubject,getasubject,deletesubject,updatesubject } from "../../service/subjectService";
@@ -46,7 +46,7 @@ const SubjectForm = () => {
       await getasubject(id).then(({ data }) => {
         console.log(data);
         setInitalData(data?.data);
-        formref.current.setFieldsValue(data?.data);
+        formref?.current?.setFieldsValue(data?.data);
       });
       setLoading(false);
     } catch (error) {
@@ -71,13 +71,15 @@ const SubjectForm = () => {
     },
     {
       layout: 24,
-      type: "TEXT",
+      type: "EDITOR",
       label: "Description",
       name: "description",
       rules: [{ required: true }],
       elementProps: {
-        placeholder: "Please enter description here",
-      },
+        elementName:"description",
+        formRef: formref,
+        // onChange:
+      }
     },
     {
       layout: 24,
@@ -119,14 +121,7 @@ const SubjectForm = () => {
       }
     
     },
-    {
-      layout: 24,
-      type: "DOCUMENTS",
-      label: "Material",
-      name: "material",
-      
     
-    },
   ];
 
   const onSuccess = (value) => {
@@ -155,6 +150,10 @@ const SubjectForm = () => {
       }
     });
   };
+
+  if(loading){
+    return <Spin />
+  }
   return (
     <Form
       ref={formref}

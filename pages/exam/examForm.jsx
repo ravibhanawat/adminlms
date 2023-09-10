@@ -36,7 +36,7 @@ const ExamForm = () => {
       //   setCategory([...data.data.map((r)=>{return {value:r._id,label:r.title}})])
       //  }) 
       await  getCourse().then(({data})=>{
-        setCourse([...data.courses.map((r)=>{return {value:r._id,label:r.title}})])
+        setCourse([...data.data.map((r)=>{return {value:r._id,label:r.title}})])
       })
     }catch(err){
 
@@ -48,9 +48,9 @@ const ExamForm = () => {
     try {
        
       await getaExam(id).then(({ data }) => {
-        console.log(data);
-        setInitalData(data?.data);
-        formref.current.setFieldsValue(data?.data);
+        console.log({...data?.data,course:data?.data?.course?.map((r)=>{return r?._id})});
+        setInitalData({...data?.data,course:data?.data?.course?.map((r)=>{return r?._id})});
+        formref.current.setFieldsValue({...data?.data,course:data?.data?.course?.map((r)=>{return r?._id})});
       });
       setLoading(false);
     } catch (error) {

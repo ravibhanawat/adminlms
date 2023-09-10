@@ -1,6 +1,7 @@
 import React from 'react';
 import { UploadOutlined } from '@ant-design/icons';
 import { Button, Upload } from 'antd';
+import { httpClient } from '../../util/Api';
 
 
 const fileList = [];
@@ -11,7 +12,7 @@ const CommonUpload = () => (
     
     <br />
     <Upload
-      action="https://api.hoicko.com/fileUpload"
+      action={`${httpClient}/fileUpload`}
       listType="picture"
       defaultFileList={[...fileList]}
       className="upload-list-inline"
