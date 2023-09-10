@@ -14,7 +14,7 @@ export const CreateACourse = (obj) => {
     return  httpClient.get(`courses/instructor/all-courses`)
   }
   export const updateCOurse = (field) => {
-    return  httpClient.put(`courses/${field.slug}`,field)
+    return  httpClient.put(`courses/${field._id}`,field)
   }
   export const deleteCourse = (id) => {
     return  httpClient.delete(`courses/${id}`)

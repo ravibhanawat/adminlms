@@ -45,8 +45,8 @@ const SubjectForm = () => {
       
       await getasubject(id).then(({ data }) => {
         console.log(data);
-        setInitalData(data?.data);
-        formref?.current?.setFieldsValue(data?.data);
+        setInitalData({...data?.data,material:data?.data?.material?.map((r)=>{return r?._id})});
+        formref?.current?.setFieldsValue({...data?.data,material:data?.data?.material?.map((r)=>{return r?._id})});
       });
       setLoading(false);
     } catch (error) {

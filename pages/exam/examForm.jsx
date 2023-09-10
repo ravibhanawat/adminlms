@@ -48,7 +48,7 @@ const ExamForm = () => {
     try {
        
       await getaExam(id).then(({ data }) => {
-        console.log({...data?.data,course:data?.data?.course?.map((r)=>{return r?._id})});
+        // console.log({...data?.data,course:data?.data?.course?.map((r)=>{return r?._id})});
         setInitalData({...data?.data,course:data?.data?.course?.map((r)=>{return r?._id})});
         formref.current.setFieldsValue({...data?.data,course:data?.data?.course?.map((r)=>{return r?._id})});
       });

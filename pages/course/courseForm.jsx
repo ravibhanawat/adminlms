@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import CommonForm from "../../components/Common/CommonForm";
 import CommonFormField from "../../components/Common/CommonFormField";
 import CommonButton from "../../components/Common/CommonButton";
-import { Button, Form, message } from "antd";
+import { Button, Form, Spin, message } from "antd";
 import {
   getaCoursebyinstructur,
   getaCourse,
@@ -11,12 +11,14 @@ import {
   CreateACourse
 } from "../../service/course";
 import { useRouter } from "next/router";
+import { getsubject } from "../../service/subjectService";
 
 const CourseForm = () => {
   const formref = useRef();
   const [loading, setLoading] = useState(false);
   const [initialData, setInitalData] = useState({});
   const [category,setCategory] = useState()
+  const [subjects,setSubject]= useState([])
   const router = useRouter();
   const { id } = router.query;
   console.log("loading", id);
@@ -34,6 +36,9 @@ const CourseForm = () => {
     await allCoursebycategory().then(({data})=>{
       setCategory([...data.allCourse.map((r)=>{return {value:r.slug,label:r.title}})])
      }) 
+    await getsubject().then(({data})=>{
+      setSubject([...data.data.map((r)=>{return {value:r._id,label:r.title}})])
+     }) 
   }
   const getUserDetail = async (id) => {
     setLoading(true);
@@ -42,9 +47,9 @@ const CourseForm = () => {
         setCategory([...data.allCourse.map((r)=>{return {value:r.slug,label:r.title}})])
        }) 
       await getaCourse(id).then(({ data }) => {
-        console.log(data);
-        setInitalData(data?.course);
-        formref.current.setFieldsValue(data?.course);
+        // console.log(data);
+        setInitalData({...data?.data,subjects:data?.data?.subjects?.map((r)=>{return r?._id})});
+        formref?.current?.setFieldsValue({...data?.data,subjects:data?.data?.subjects?.map((r)=>{return r?._id})});
       });
       setLoading(false);
     } catch (error) {
@@ -129,14 +134,18 @@ const CourseForm = () => {
         placeholder: "Eg: USER",
       },
     },
-  //   {
-  //     layout: 24,
-  //     type: "TEXT",
-  //     label: "Subject",
-  //     name: "subjects",
-      
+    {
+      layout: 24,
+      type: "SELECT",
+      label: "Subject",
+      name: "subjects",
+      options:subjects,
+      multiple:true,
+      elementProps:{
+        mode:"multiple"
+      }
     
-  //   },
+    },
   ];
 
   const onSuccess = (value) => {
@@ -165,6 +174,10 @@ const CourseForm = () => {
       }
     });
   };
+
+  if(loading){
+    return <Spin />
+  }
   return (
     <Form
       ref={formref}

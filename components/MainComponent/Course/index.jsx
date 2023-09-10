@@ -38,7 +38,7 @@ const CourseManage = () => {
 
   const onEditRow = (Row) => {
     console.log("onEditRow", Row);
-    onAddRow({ id: Row?.slug });
+    onAddRow({ id: Row?._id });
   };
 
   const onDeleteRow = async (Row) => {
