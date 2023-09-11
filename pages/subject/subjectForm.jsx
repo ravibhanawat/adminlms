@@ -93,7 +93,11 @@ const SubjectForm = () => {
       layout: 24,
       type: "DOCUMENTS",
       label: "Image",
-      name: "IMAGE",
+      name: "image",
+      elementProps: {
+        type:"subject"
+        // onChange:
+      }
     //   rules: [{ required: true }],
       
     },

@@ -73,7 +73,7 @@ const CommonFormField = ({ items, layout = 1 }) => {
 
       switch (item?.type?.toUpperCase()) {
         case "DOCUMENTS":
-          element = <CommonUploader />;
+          element = <CommonUploader {...item.elementProps} />;
           break;
         case "TEXT":
           element = (

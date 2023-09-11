@@ -81,9 +81,12 @@ const Material = () => {
         },
         {
           title: "status",
-          dataIndex: "starus",
-          key: "starus",
+          dataIndex: "status",
+          key: "status",
           align: "center",
+          render:(_,data,index)=>{
+            return <div key={index}>{data.status ? "Active" : "Deactive"}</div>
+          }
         },
         {
           title: "Action",
