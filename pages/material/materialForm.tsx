@@ -104,12 +104,22 @@ const materialForm = () => {
       },
         },
         {
+          layout: 24,
+          type: "TEXT",
+          label: "info",
+          name: "info",
+          rules: [{ required: true }],
+          elementProps: {
+            placeholder: "Please enter info here",
+          },
+        },
+        {
             layout:12,
             type:"SWITCH",
             label:'Status',name:'status', 
             rules: [{ required: true }],
       elementProps: {
-        defaultChecked:true
+        defaultChecked:false
       },
         },
     ]

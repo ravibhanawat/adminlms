@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import CommonForm from "../../components/Common/CommonForm";
 import CommonFormField from "../../components/Common/CommonFormField";
 import CommonButton from "../../components/Common/CommonButton";
-import {  Form, message } from "antd";
+import {  Form, Spin, message } from "antd";
  
 import { useRouter } from "next/router";
 import { CreateAExam, allExambycategory, getaExam, updateExam } from "../../service/examService";
@@ -48,9 +48,9 @@ const ExamForm = () => {
     try {
        
       await getaExam(id).then(({ data }) => {
-        // console.log({...data?.data,course:data?.data?.course?.map((r)=>{return r?._id})});
+        console.log(data?.data );
         setInitalData({...data?.data,course:data?.data?.course?.map((r)=>{return r?._id})});
-        formref.current.setFieldsValue({...data?.data,course:data?.data?.course?.map((r)=>{return r?._id})});
+        formref?.current?.setFieldsValue({...data?.data,course:data?.data?.course?.map((r)=>{return r?._id})});
       });
       setLoading(false);
     } catch (error) {
@@ -88,6 +88,16 @@ const ExamForm = () => {
     },
     {
       layout: 24,
+      type: "TEXT",
+      label: "info",
+      name: "info",
+      rules: [{ required: true }],
+      elementProps: {
+        placeholder: "Please enter info here",
+      },
+    },
+    {
+      layout: 24,
       type: "NUMBER",
       label: "price",
       name: "price",
@@ -98,9 +108,10 @@ const ExamForm = () => {
       layout: 24,
       type: "DOCUMENTS",
       label: "Image",
-      name: "IMAGE",
+      name: "image",
       elementProps:{
-        type:"exam"
+        type:"exam",
+        maxCount:1
       }
     //   rules: [{ required: true }],
       
@@ -140,7 +151,9 @@ const ExamForm = () => {
     
     },
   ];
-
+  if(loading){
+    return <Spin />
+  }
   const onSuccess = (value) => {
     console.log(value);
 

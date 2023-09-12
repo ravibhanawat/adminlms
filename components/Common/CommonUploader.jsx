@@ -2,14 +2,27 @@ import React,{useState} from 'react';
 import { UploadOutlined } from '@ant-design/icons';
 import { Button, Upload } from 'antd';
 import { httpClient, url } from '../../util/Api';
-
+import {deleteAttachment} from "../../service/blogs";
 
 const fileList = [];
 
-const CommonUpload = ({onChange,type,...item}) => {
+const CommonUpload = ({children,onChange,type,...item}) => {
   console.log(item)
+  const [fileList,setfileList] = useState(item?.value ??[])
   const [loading, setLoading] = useState(false);
- 
+  const onDeleteAttach = (file) => {
+    console.log('delete',file)
+    const r = confirm('are you sure to delete?');
+    if (r) {
+      deleteAttachment(file?.response)
+      .then(() => {
+      return 
+      });
+      return true;
+    } else {
+      return false;
+    }
+  };
   const props = {
     name: "file",
     onChange: info => {
@@ -42,10 +55,16 @@ const CommonUpload = ({onChange,type,...item}) => {
       method='POST'
       listType="picture"
       {...props}
-      defaultFileList={[...fileList]}
+      // fileList={item?.value}
+      defaultFileList={item?.value}
+      onRemove={onDeleteAttach}
       className="upload-list-inline"
     >
-      <Button icon={<UploadOutlined />}>Upload</Button>
+      
+      {/* <Button icon={<UploadOutlined />}>Upload</Button> */}
+      {
+        children && React.isValidElement(children) ? children : <Button icon={<UploadOutlined />}>Upload</Button>
+      }
     </Upload>
   </>
 )};

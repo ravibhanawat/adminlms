@@ -91,9 +91,16 @@ const ExamManage = () => {
       dataIndex: "image",
       key: "image",
       align: "center",
-      render:(_,item)=>{
-        return(<Image width={50} height={50} src={item.image} />)
-      }
+      render:(_,item,index)=>{
+        // console.log(item)
+        return(
+          <div key={index} >
+            { item?.image?.map?.((r,index)=>{
+              return (<Image width={50} height={50} src={r?.fileUrl} />)
+            }) ?? undefined }
+         
+          </div>
+      )}
     },
     {
       title: "category",
@@ -112,6 +119,14 @@ const ExamManage = () => {
       dataIndex: "paid",
       key: "paid",
       align: "center",
+      render:(_,item,index)=>{
+        // console.log(item)
+        return(
+          <div key={index} >
+             {item.paid ? "Yes":"No"}
+         
+          </div>
+      )}
     },
     
     {

@@ -15,3 +15,9 @@ export const updateBlog = (id, field) => {
 export const deleteBlog = (id) => {
   return  httpClient.delete(`blog/${id}`,{isDeleted:true})
 }
+
+
+export const deleteAttachment = (item)=>{
+  console.log(item)
+  return httpClient.delete(`fileUpload/${item?.filePath}?filename=${item?.name}`,)
+}

@@ -91,6 +91,16 @@ const SubjectForm = () => {
     },
     {
       layout: 24,
+      type: "TEXT",
+      label: "info",
+      name: "info",
+      rules: [{ required: true }],
+      elementProps: {
+        placeholder: "Please enter info here",
+      },
+    },
+    {
+      layout: 24,
       type: "DOCUMENTS",
       label: "Image",
       name: "image",
