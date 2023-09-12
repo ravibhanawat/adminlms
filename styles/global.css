@@ -116,8 +116,13 @@
     text-transform: capitalize !important;
 }
 
-
-
+.ant-layout-sider-collapsed {
+    width: 7rem !important;
+}
+ 
+.ant-layout-sider-collapsed .ant-menu-vertical .ant-menu-item, .ant-layout-sider-collapsed .ant-menu-vertical-left .ant-menu-item, .ant-layout-sider-collapsed .ant-menu-vertical-right .ant-menu-item, .ant-layout-sider-collapsed .ant-menu-inline .ant-menu-item, .ant-layout-sider-collapsed .ant-menu-vertical .ant-menu-submenu-title, .ant-layout-sider-collapsed .ant-menu-vertical-left .ant-menu-submenu-title, .ant-layout-sider-collapsed .ant-menu-vertical-right .ant-menu-submenu-title, .ant-layout-sider-collapsed .ant-menu-inline .ant-menu-submenu-title {
+    padding: 0 calc((40px - 20px) / 2) !important ;
+}
 
 
 

@@ -15,7 +15,7 @@ const ExamForm = () => {
   const [course,setCourse] = useState([])
   const [category,setCategory] = useState()
   const router = useRouter();
-  const { id } = router.query;
+  const { id } = router?.query;
   // console.log("loading", id);
   const formType = id ? "update" : "create";
   // console.log("formType", formType);
@@ -99,6 +99,9 @@ const ExamForm = () => {
       type: "DOCUMENTS",
       label: "Image",
       name: "IMAGE",
+      elementProps:{
+        type:"exam"
+      }
     //   rules: [{ required: true }],
       
     },

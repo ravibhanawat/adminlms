@@ -14,7 +14,7 @@ const SubjectForm = () => {
   const [initialData, setInitalData] = useState({});
   const [material,setMaterial] = useState()
   const router = useRouter();
-  const { id } = router.query;
+  const { id } = router?.query;
   
   const formType = id ? "update" : "create";
   

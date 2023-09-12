@@ -99,6 +99,7 @@ const materialForm = () => {
             label:'files',name:'files', 
             rules: [{ required: true }],
       elementProps: {
+        type:"material"
         // placeholder: "Please enter title here",
       },
         },

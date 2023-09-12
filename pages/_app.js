@@ -16,7 +16,7 @@ const Page = ({Component, pageProps, store}) => {
   return (
     <React.Fragment>
       <Head>
-        <title>Wieldy- Admin Dashboard</title>
+        <title>Denta best- Admin Dashboard</title>
       </Head>
       <Provider store={store}>
         <AuthProvider>

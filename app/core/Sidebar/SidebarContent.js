@@ -59,6 +59,7 @@ const SidebarContent = () => {
             defaultOpenKeys={[defaultOpenKeys]}
             selectedKeys={[selectedKeys]}
             theme={themeType === THEME_TYPE_LITE ? 'lite' : 'dark'}
+            
             mode="inline">
 
             <Menu.Item key="sample">

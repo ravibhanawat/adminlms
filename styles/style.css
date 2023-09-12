@@ -30918,7 +30918,7 @@ h6,
   }
 }
 .ant-layout-sider-collapsed {
-  width: 80px !important;
+  width: 7rem !important;
 }
 @media screen and (max-width: 991px) {
   .ant-layout-sider-collapsed.gx-mini-custom-sidebar {

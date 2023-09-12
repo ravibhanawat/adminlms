@@ -109,6 +109,9 @@ const CourseForm = () => {
       type: "DOCUMENTS",
       label: "Image",
       name: "IMAGE",
+      elementProps:{
+        type:"course"
+      }
     //   rules: [{ required: true }],
       
     },
