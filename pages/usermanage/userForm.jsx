@@ -48,22 +48,22 @@ const userForm = () => {
       layout: 6,
       type: "TEXT",
       label: "First Name",
-      name: "firstname",
+      name: "fullName",
       rules: [{ required: true }],
       elementProps: {
-        placeholder: "Enter your first name",
+        placeholder: "Enter your FullName",
       },
     },
-    {
-      layout: 6,
-      type: "TEXT",
-      label: "Last Name",
-      name: "lastname",
-      rules: [{ required: true }],
-      elementProps: {
-        placeholder: "Enter your last name",
-      },
-    },
+    // {
+    //   layout: 6,
+    //   type: "TEXT",
+    //   label: "Last Name",
+    //   name: "lastname",
+    //   rules: [{ required: true }],
+    //   elementProps: {
+    //     placeholder: "Enter your last name",
+    //   },
+    // },
     {
       layout: 6,
       type: "TEXT",
