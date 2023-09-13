@@ -34,7 +34,7 @@ const CommonUpload = ({children,onChange,type,...item}) => {
       }
       if (info.file.status === 'done') {
           console.log(info)
-          const fileList = info?.fileList?.map((r)=>{return{name: r.name,fileUrl:r.response.fileUrl,uid:r.uid,status:r.status}})    
+          const fileList = info?.fileList?.map((r)=>{return{name: r.name,fileUrl:r.response.fileUrl,uid:r.uid,status:r.status,filePath:r.filePath}})    
           onChange?.(fileList)
 
           setLoading(false);

@@ -3,8 +3,8 @@ import {Cookies} from "react-cookie";
 
 const cookies = new Cookies();
 const token = cookies.get("token");
-export const url = `http://localhost:5000/api`
-// export const url = `http://15.206.144.233:5000/api`
+// export const url = `http://localhost:5000/api`
+export const url = `http://15.206.144.233:5000/api`
 export const httpClient = axios.create({
   baseURL:  url, //YOUR_API_URL HERE
   // baseURL: `http://localhost:5000/api`, //YOUR_API_URL HERE
