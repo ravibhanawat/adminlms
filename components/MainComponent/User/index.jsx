@@ -92,16 +92,16 @@ const UserManage = () => {
   };
 
   const columns = [
+    // {
+    //   title: "firstname",
+    //   dataIndex: "firstname",
+    //   key: "firstname",
+    //   align: "center",
+    // },
     {
-      title: "firstname",
-      dataIndex: "firstname",
-      key: "firstname",
-      align: "center",
-    },
-    {
-      title: "lastname",
-      dataIndex: "lastname",
-      key: "lastname",
+      title: "Name",
+      dataIndex: "fullName",
+      key: "fullName",
       align: "center",
     },
     {

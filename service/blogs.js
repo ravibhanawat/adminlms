@@ -18,6 +18,6 @@ export const deleteBlog = (id) => {
 
 
 export const deleteAttachment = (item)=>{
-  console.log(item)
+  // console.log(item)
   return httpClient.delete(`fileUpload/${item?.filePath}?filename=${item?.name}`,)
 }

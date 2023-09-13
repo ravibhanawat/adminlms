@@ -10,6 +10,9 @@ class MyDocument extends Document {
         <link rel="stylesheet" href="/vendors/gaxon/styles.css"/>
         <link rel="stylesheet" href="/vendors/flag/sprite-flags-24x24.css"/>
         <link rel="stylesheet" href="/vendors/noir-pro/styles.css"/>
+        <meta http-equiv='cache-control' content='no-cache' />
+<meta http-equiv='expires' content='0' />
+<meta http-equiv='pragma' content='no-cache'></meta>
       </Head>
       <body>
         <Main/>
