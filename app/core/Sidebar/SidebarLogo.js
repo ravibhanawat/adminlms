@@ -34,7 +34,7 @@ const SidebarLogo = () => {
           themeType === THEME_TYPE_LITE ?
             <img alt="logo1" src={("/images/logo-white.png")}/> :
               <img alt="logo2" src={("/images/logo.webp")} style={{ width: "48px" }} />}
-        <span style={{fontSize:"150%"}}><span style={{color:"white",}}> DENTA</span> <b style={{color: "#b32134"}}>BEST</b></span>
+        <span style={{fontSize:"120%",display:"flex",}}><span style={{color:"white",}}> DENTA</span> <b style={{color: "#b32134"}}>BEST</b></span>
         </a>
       </Link>
       {(navStyle === NAV_STYLE_FIXED || navStyle === NAV_STYLE_MINI_SIDEBAR) ? <div className="gx-linebar">

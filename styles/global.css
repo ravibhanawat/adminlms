@@ -115,6 +115,11 @@
  .ant-table-cell {
     text-transform: capitalize !important;
 }
+.ant-table-tbody > tr > td {
+    height: 31px ;
+    max-height: 31px;
+    padding: 4px;
+  }
 
 .ant-layout-sider-collapsed {
     width: 7rem !important;
@@ -175,6 +180,17 @@
     margin-left: 0px !important;
     margin-right: 0px !important;
     margin-top: 18px !important;
+}
+
+.gx-layout-sider-scrollbar div{
+    position: absolute;
+    inset: 0px;
+    overflow-y: auto !important;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    overflow-x: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
 }
 
  

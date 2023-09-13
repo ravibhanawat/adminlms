@@ -71,12 +71,7 @@ const SubjectManage = () => {
       key: "title",
       align: "center",
     },
-    {
-      title: "description",
-      dataIndex: "description",
-      key: "description",
-      align: "center",
-    },
+    
     {
       title: "price",
       dataIndex: "price",

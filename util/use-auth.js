@@ -105,15 +105,16 @@ const useProvideAuth = () => {
   const getAuthUser = (data) => {
     fetchStart();
     httpClient.get("user/auth/me").then(({data}) => {
+      console.log(data)
       if (data && data.status) {
-        fetchSuccess();
         console.log("data",data)
         // const cookies = new Cookies();
         // const token = cookies.get("token");
         // httpClient.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-
-
+        
+        
         setAuthUser(data);
+        fetchSuccess();
       } else {
         fetchError(data.error);
       }
@@ -133,10 +134,16 @@ const useProvideAuth = () => {
       const token = cookies.get("token");
       httpClient.defaults.headers.common['Authorization'] = 'Bearer ' + token;
 
-    
+      if(!token){ 
+        cookies.remove('token');
+        httpClient.defaults.headers.common['Authorization'] = '';
+        setLoadingUser(false); 
+        return 
+        
+      }
     httpClient.get("user/auth/me").then(({ data }) => {
         console.log(data);
-        if (data.username) {
+        if (data) {
           setAuthUser(data);
         }
         setLoadingUser(false);

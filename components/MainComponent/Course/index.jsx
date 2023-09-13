@@ -70,15 +70,15 @@ const CourseManage = () => {
       key: "title",
       align: "center",
     },
-    {
-      title: "description",
-      dataIndex: "description",
-      key: "description",
-      align: "center",
-      render:(_,item)=>{
-        return(<div key={item._id} dangerouslySetInnerHTML={{__html:item.description}} />)
-      }
-    },
+    // {
+    //   title: "description",
+    //   dataIndex: "description",
+    //   key: "description",
+    //   align: "center",
+    //   render:(_,item)=>{
+    //     return(<div key={item._id} dangerouslySetInnerHTML={{__html:item.description}} />)
+    //   }
+    // },
     {
       title: "price",
       dataIndex: "price",

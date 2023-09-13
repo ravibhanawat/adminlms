@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {Layout, Popover} from "antd";
+import {Layout, Popconfirm, Popover} from "antd";
 import Link from "next/link";
 
 import CustomScrollbars from "../../../util/CustomScrollbars";
@@ -13,10 +13,14 @@ import MailNotification from "../../components/MailNotification";
 
 import {NAV_STYLE_DRAWER, NAV_STYLE_FIXED, NAV_STYLE_MINI_SIDEBAR, TAB_SIZE} from "../../../constants/ThemeSetting";
 import {useDispatch, useSelector} from "react-redux";
-
+import { PoweroffOutlined } from "@ant-design/icons";
+import {Cookies} from "react-cookie";
+import { useRouter } from 'next/router'
+import { httpClient } from "../../../util/Api";
 const {Header} = Layout;
 
 const Topbar = () => {
+  const router = useRouter()
   const locale = useSelector(({settings}) => settings.locale);
   const width = useSelector(({settings}) => settings.width);
   const navCollapsed = useSelector(({settings}) => settings.navCollapsed);
@@ -24,7 +28,13 @@ const Topbar = () => {
 
   const [searchText, setSearchText] = useState('');
   const dispatch = useDispatch();
-
+  const Logout = ()=>{
+    const cookies = new Cookies();
+    cookies.remove('token');
+    httpClient.defaults.headers.common['Authorization'] = '';
+    router.push("/signin")
+    
+  }
   const languageMenu = () => (
     <CustomScrollbars className="gx-popover-lang-scroll">
       <ul className="gx-sub-popover">
@@ -56,11 +66,11 @@ const Topbar = () => {
       <Link href="/">
         <img alt="" className="gx-d-block gx-d-lg-none gx-pointer" src={("/images/w-logo.png")}/></Link>
 
-      <SearchBox styleName="gx-d-none gx-d-lg-block gx-lt-icon-search-bar-lg"
+      {/* <SearchBox styleName="gx-d-none gx-d-lg-block gx-lt-icon-search-bar-lg"
                  placeholder="Search in app..."
                  onChange={updateSearchChatUser}
-                 value={searchText}/>
-      <ul className="gx-header-notifications gx-ml-auto">
+                 value={searchText}/> */}
+      {/* <ul className="gx-header-notifications gx-ml-auto">
         <li className="gx-notify gx-notify-search gx-d-inline-block gx-d-lg-none">
           <Popover overlayClassName="gx-popover-horizantal" placement="bottomRight" content={
             <SearchBox styleName="gx-popover-search-bar"
@@ -106,7 +116,15 @@ const Topbar = () => {
             <li className="gx-user-nav"><UserInfo/></li>
           </>
         }
-      </ul>
+      </ul> */}
+      
+      <div className="-header-notifications gx-ml-auto">
+      <Popconfirm onConfirm={()=>Logout()} title={"Are you sure to logout"}>
+
+      <PoweroffOutlined  className="gx-notify  gx-d-inline-block  "    />
+      </Popconfirm>
+      </div>
+       
     </Header>
   );
 };
